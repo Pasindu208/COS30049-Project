@@ -11,3 +11,14 @@ The Smart Contract Audit System aims to assist users in identifying potential vu
 3. The system should display comprehensive audit reports on a dedicated page, emphasizing the identified vulnerabilities and their respective categories.
 4. The system needs to provide corresponding suggestions for each vulnerability category.
 5. Users should be able to retrieve previous reports
+
+
+### Pages:
+
+1. Home page
+2. Login/Sign up
+3. Submit Solidity files (.sol)
+4. Report page
+   	Previous reports and current
+   	Suggestions for vulnerabilities
+5. About us

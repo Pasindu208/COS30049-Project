@@ -10,7 +10,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 999,
     width: '100%',
     height: '10vh',
-    backgroundColor: '#71757250',
+    top: '0px',
+    left: '0px',
+    backgroundColor: '#6E7E85',
     backdropFilter: 'blur(5px)',
     display: 'flex',
     justifyContent: 'space-between',
@@ -29,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
   navlinks: {
     display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
   },
   navlink: {
     margin: theme.spacing(1),

@@ -6,10 +6,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#6E7E85",
     color: "white",
     textAlign: "center",
-    padding: theme.spacing(2),
-    position: "fixed",
-    bottom: 0,
     width: "100%",
+    height: '7vh',
+    display: "flex",
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 }));
 

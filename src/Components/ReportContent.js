@@ -10,6 +10,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
+import { makeStyles } from "@material-ui/core";
 
 const auditReport = {
   contractName: "SampleContract",
@@ -29,12 +30,56 @@ const criticalIssues = [
     severity: "High",
     recommendation: "Recommendation for issue 2"
   },
+  {
+    title: "Critical Issue 3",
+    description: "Description of the critical issue 1",
+    severity: "High",
+    recommendation: "Recommendation for issue 1"
+  },
+  {
+    title: "Critical Issue 4",
+    description: "Description of the critical issue 2",
+    severity: "High",
+    recommendation: "Recommendation for issue 2"
+  },
+  {
+    title: "Critical Issue 5",
+    description: "Description of the critical issue 1",
+    severity: "High",
+    recommendation: "Recommendation for issue 1"
+  },
+  {
+    title: "Critical Issue 6",
+    description: "Description of the critical issue 2",
+    severity: "High",
+    recommendation: "Recommendation for issue 2"
+  },
+  {
+    title: "Critical Issue 7",
+    description: "Description of the critical issue 1",
+    severity: "High",
+    recommendation: "Recommendation for issue 1"
+  },
+  {
+    title: "Critical Issue 8",
+    description: "Description of the critical issue 2",
+    severity: "High",
+    recommendation: "Recommendation for issue 2"
+  },
 ];
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: '10vh',
+    padding: theme.spacing(2),
+    minHeight: '100vh',
+  }
+}))
 function ReportContent() {
+  const classes = useStyles();
   return (
-    <Container maxWidth="md" style={{ marginTop: "20px" }}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Container maxWidth="md" className={classes.root}>
+      <Typography variant="h4" align="center" color={"white"} gutterBottom>
         Security Audit Report
       </Typography>
 
@@ -44,9 +89,6 @@ function ReportContent() {
         </Typography>
         <Typography>Contract Name: {auditReport.contractName}</Typography>
         <Typography>Audit Date: {auditReport.auditDate}</Typography>
-        <Typography>Audited by: {auditReport.auditor}</Typography>
-
-        {/* Display more contract information here */}
 
         <Typography variant="h5" gutterBottom style={{ marginTop: "20px" }}>
           Critical Issues

@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/navbar'
-import Homemid from '../Components/homeMid'
+import ReportContent from '../Components/reportContent'
 import Footer from '../Components/footer'
 
-const Home = () => {
+const Reports = () => {
   return (
-    <div className="App">
+    <div>
       <Navbar />
-      <Homemid />
+      <ReportContent />
       <Footer />
     </div>
   )
 }
 
-export default Home
+export default Reports

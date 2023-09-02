@@ -34,7 +34,7 @@
     padding: 20px;
     width: 80%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    flex: 1;  /* This ensures it takes up any available space */
+    flex: 1; /* This ensures it takes up any available space */
 }
 
 .submit-section input,

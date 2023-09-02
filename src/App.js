@@ -1,12 +1,12 @@
-import './Styles/App.css';
-import Home from './Screens/home';
+import "./Styles/App.css";
+import Home from "./Screens/home";
 
 function App() {
-  return (
-    <div className="App">
-      <Home/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Home />
+        </div>
+    );
 }
 
 export default App;

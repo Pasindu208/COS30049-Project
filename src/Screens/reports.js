@@ -1,16 +1,16 @@
-import React from 'react'
-import Navbar from '../Components/navbar'
-import ReportContent from '../Components/reportContent'
-import Footer from '../Components/footer'
+import React from "react";
+import Navbar from "../Components/navbar";
+import ReportContent from "../Components/reportContent";
+import Footer from "../Components/footer";
 
 const Reports = () => {
-  return (
-    <div>
-      <Navbar />
-      <ReportContent />
-      <Footer />
-    </div>
-  )
-}
+    return (
+        <div>
+            <Navbar />
+            <ReportContent />
+            <Footer />
+        </div>
+    );
+};
 
-export default Reports
+export default Reports;

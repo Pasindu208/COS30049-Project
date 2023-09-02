@@ -3,12 +3,12 @@ import { Grid, makeStyles } from "@material-ui/core";
 import headerImage from "../images/headerImage.jpg";
 // import Paper from '@mui/material/Paper';
 // import { styled } from '@mui/material/styles';
-<<<<<<< Updated upstream
-// import backgroundImage from '../images/layered-waves-haikei.svg';
+// <<<<<<< Updated upstream
+// // import backgroundImage from '../images/layered-waves-haikei.svg';
 
-=======
-import backgroundImage from "../images/layered-waves-haikei.svg";
->>>>>>> Stashed changes
+// =======
+// import backgroundImage from "../images/layered-waves-haikei.svg";
+// >>>>>>> Stashed changes
 
 const useStyles = makeStyles((theme) => ({
   mainDiv: {
@@ -50,79 +50,79 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       height: "auto",
     },
-<<<<<<< Updated upstream
-    backgroundImage: {
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-        top:'0',
-        left: '0',
-        objectFit: 'cover',
-    },
-    grid: {
-        height: 'calc(90vh - 24px)',
-        position: 'relative',
-        // height: '100%',
-        // border: '1px solid red',
-    },
-    gridItem: {
-        position: 'relative',
-        height: '70%',
-        [theme.breakpoints.down('xs')]: {
-            height: 'auto',
-        }
-    },
-    cont: {
-        position: 'relative',
-        // border: 'black 1px solid',
-        height: '100%',
-        // backgroundColor: 'red',
-    },
-    headerImage: {
-        position: 'relative',
-        // display: 'block',
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-        borderRadius: '10px',
-        [theme.breakpoints.down('xs')]: {
-            height: 'auto',
-        },
-    },
-    textCont: {
-        position: 'relative',
-        height: '70%',
-        // color: '#fff',
-    },
-    descDiv: {
-        position: 'relative',
-        height: '100%',
-        // border: '1px solid black',
-        display: 'flex',
-        alignItems: 'center',
-        textAlign: 'justify',
-        padding: '20px',
-        fontSize: '1.2rem',
-        [theme.breakpoints.down('sm')]: {
-            display: 'block',  
-            paddingTop: 0, 
-            fontSize: '1.1rem',
-            // alignItems: 'flex-start',
-        },
-        [theme.breakpoints.down('xs')]: {
-            // display: 'block',
-            // paddingTop: 0,
-            fontSize: '1.2rem',
-            // alignItems: 'flex-start',
-        },
-    }
-    // headerDiv: {
-    //     // border: '1px solid red',
-    //     // height: 'calc(90vh - 40px)',
-    //     display: 'flex',
+// <<<<<<< Updated upstream
+//     backgroundImage: {
+//         position: 'fixed',
+//         width: '100%',
+//         height: '100%',
+//         top:'0',
+//         left: '0',
+//         objectFit: 'cover',
+//     },
+//     grid: {
+//         height: 'calc(90vh - 24px)',
+//         position: 'relative',
+//         // height: '100%',
+//         // border: '1px solid red',
+//     },
+//     gridItem: {
+//         position: 'relative',
+//         height: '70%',
+//         [theme.breakpoints.down('xs')]: {
+//             height: 'auto',
+//         }
+//     },
+//     cont: {
+//         position: 'relative',
+//         // border: 'black 1px solid',
+//         height: '100%',
+//         // backgroundColor: 'red',
+//     },
+//     headerImage: {
+//         position: 'relative',
+//         // display: 'block',
+//         height: '100%',
+//         width: '100%',
+//         objectFit: 'cover',
+//         borderRadius: '10px',
+//         [theme.breakpoints.down('xs')]: {
+//             height: 'auto',
+//         },
+//     },
+//     textCont: {
+//         position: 'relative',
+//         height: '70%',
+//         // color: '#fff',
+//     },
+//     descDiv: {
+//         position: 'relative',
+//         height: '100%',
+//         // border: '1px solid black',
+//         display: 'flex',
+//         alignItems: 'center',
+//         textAlign: 'justify',
+//         padding: '20px',
+//         fontSize: '1.2rem',
+//         [theme.breakpoints.down('sm')]: {
+//             display: 'block',  
+//             paddingTop: 0, 
+//             fontSize: '1.1rem',
+//             // alignItems: 'flex-start',
+//         },
+//         [theme.breakpoints.down('xs')]: {
+//             // display: 'block',
+//             // paddingTop: 0,
+//             fontSize: '1.2rem',
+//             // alignItems: 'flex-start',
+//         },
+//     }
+//     // headerDiv: {
+//     //     // border: '1px solid red',
+//     //     // height: 'calc(90vh - 40px)',
+//     //     display: 'flex',
 
-    // }
-=======
+//     // }
+// =======
   },
   textCont: {
     position: "relative",
@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
   //     display: 'flex',
 
   // }
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
 }));
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -158,21 +158,21 @@ const useStyles = makeStyles((theme) => ({
 //     color: theme.palette.text.secondary,
 // }));
 const Homemid = () => {
-<<<<<<< Updated upstream
-    const classes = useStyles();
-    return (
-        <div className={classes.mainDiv}>
-            {/* <img src={backgroundImage} alt='backgroundimg' className={classes.backgroundImage} /> */}
-            {/* <div className={classes.headerDiv}>
-=======
+// <<<<<<< Updated upstream
+//     const classes = useStyles();
+//     return (
+//         <div className={classes.mainDiv}>
+//             {/* <img src={backgroundImage} alt='backgroundimg' className={classes.backgroundImage} /> */}
+//             {/* <div className={classes.headerDiv}>
+// =======
   const classes = useStyles();
   return (
     <div className={classes.mainDiv}>
-      <img
+      {/* <img
         src={backgroundImage}
         alt="backgroundimg"
         className={classes.backgroundImage}
-      />
+      /> */}
       {/* <div className={classes.headerDiv}>
 >>>>>>> Stashed changes
             <div className={classes.imageDiv}>

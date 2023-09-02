@@ -1,39 +1,15 @@
-<<<<<<< Updated upstream
-import React from 'react'
-import { Grid, makeStyles } from '@material-ui/core'
-
-
-const useStyles = makeStyles((theme) => ({
-
-}))
-
-const Footer = () => {
-    const classes = useStyles();
-    return (
-        <div>
-            <Grid container spacing={2} columns={12}>
-                <Grid item xs={12}>
-                    Logo
-                </Grid>
-            </Grid>
-        </div>
-    )
-}
-
-export default Footer
-=======
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: '#6E7E85',
-    color: 'white',
-    textAlign: 'center',
+    backgroundColor: "#6E7E85",
+    color: "white",
+    textAlign: "center",
     padding: theme.spacing(2),
-    position: 'fixed',
+    position: "fixed",
     bottom: 0,
-    width: '100%',
+    width: "100%",
   },
 }));
 
@@ -48,4 +24,3 @@ const Footer = () => {
 };
 
 export default Footer;
->>>>>>> Stashed changes

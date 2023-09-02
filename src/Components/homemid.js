@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     grid: {
         height: "90vh",
         position: "relative",
+        [theme.breakpoints.down('xs')]: {
+            height: "100%",
+        }
     },
     gridItemTop: {
         position: 'relative',

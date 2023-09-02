@@ -1,0 +1,81 @@
+import React from "react";
+import {
+  Container,
+  Typography,
+  Paper,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@mui/material";
+
+const auditReport = {
+  contractName: "SampleContract",
+  auditDate: "2023-09-01"
+};
+
+const criticalIssues = [
+  {
+    title: "Critical Issue 1",
+    description: "Description of the critical issue 1",
+    severity: "High",
+    recommendation: "Recommendation for issue 1"
+  },
+  {
+    title: "Critical Issue 2",
+    description: "Description of the critical issue 2",
+    severity: "High",
+    recommendation: "Recommendation for issue 2"
+  },
+];
+
+function ReportContent() {
+  return (
+    <Container maxWidth="md" style={{ marginTop: "20px" }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        Security Audit Report
+      </Typography>
+
+      <Paper elevation={3} style={{ padding: "20px" }}>
+        <Typography variant="h5" gutterBottom>
+          Contract Information
+        </Typography>
+        <Typography>Contract Name: {auditReport.contractName}</Typography>
+        <Typography>Audit Date: {auditReport.auditDate}</Typography>
+        <Typography>Audited by: {auditReport.auditor}</Typography>
+
+        {/* Display more contract information here */}
+
+        <Typography variant="h5" gutterBottom style={{ marginTop: "20px" }}>
+          Critical Issues
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Title</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Severity</TableCell>
+                <TableCell>Recommendation</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {criticalIssues.map((issue, index) => (
+                <TableRow key={index}>
+                  <TableCell>{issue.title}</TableCell>
+                  <TableCell>{issue.description}</TableCell>
+                  <TableCell>{issue.severity}</TableCell>
+                  <TableCell>{issue.recommendation}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+    </Container>
+  );
+}
+
+export default ReportContent;

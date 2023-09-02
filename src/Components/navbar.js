@@ -3,21 +3,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 // import Link from 'https://youtube.com';
 
-const textColor = '#ffffff';
+const textColor = '#414141';
 const useStyles = makeStyles((theme) => ({
   navbar: {
-    position: 'absolute',
+    position: 'fixed',
     zIndex: 999,
     width: '100%',
     height: '10vh',
     top: '0px',
     left: '0px',
-    backgroundColor: '#6E7E85',
+    backgroundColor: '#f0f8ff80',
+    // backgroundColor: '#bbbbbb80',
     backdropFilter: 'blur(5px)',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    boxShadow: '0px 10px 10px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0px 10px 10px rgba(0, 0, 0, 0.1)',
     [theme.breakpoints.down('xs')]: {
       fontSize: '12px'
     },
@@ -39,14 +40,15 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     textDecoration: 'none',
     color: textColor,
-    border: '1px solid white',
+    border: '1.5px solid white',
     padding: '10px 20px',
   },
   button: {
     margin: theme.spacing(1),
-    border: '2px solid white',
-    color: 'white',
+    border: '1px solid' + textColor,
+    color: textColor,
     borderRadius: '5px',
+    // fontWeight: 600,
   }
 }));
 

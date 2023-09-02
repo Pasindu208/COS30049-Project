@@ -3,7 +3,7 @@ import { Grid, makeStyles } from '@material-ui/core';
 import headerImage from '../images/headerImage.jpg';
 // import Paper from '@mui/material/Paper';
 // import { styled } from '@mui/material/styles';
-import backgroundImage from '../images/layered-waves-haikei.svg';
+// import backgroundImage from '../images/layered-waves-haikei.svg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,12 +28,15 @@ const useStyles = makeStyles((theme) => ({
     },
     gridItem: {
         position: 'relative',
-        // height: '100%',
+        height: '70%',
+        [theme.breakpoints.down('xs')]: {
+            height: 'auto',
+        }
     },
     cont: {
         position: 'relative',
         // border: 'black 1px solid',
-        height: '70%',
+        height: '100%',
         // backgroundColor: 'red',
     },
     headerImage: {
@@ -49,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
     },
     textCont: {
         position: 'relative',
-        height: '70%'
-
+        height: '70%',
+        // color: '#fff',
     },
     descDiv: {
         position: 'relative',
@@ -61,9 +64,18 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'justify',
         padding: '20px',
         fontSize: '1.2rem',
-        // [theme.breakpoints.down('sm')]: {
-        //     fontSize: '1.1rem',
-        // },
+        [theme.breakpoints.down('sm')]: {
+            display: 'block',  
+            paddingTop: 0, 
+            fontSize: '1.1rem',
+            // alignItems: 'flex-start',
+        },
+        [theme.breakpoints.down('xs')]: {
+            // display: 'block',
+            // paddingTop: 0,
+            fontSize: '1.2rem',
+            // alignItems: 'flex-start',
+        },
     }
     // headerDiv: {
     //     // border: '1px solid red',
@@ -84,7 +96,7 @@ const Homemid = () => {
     const classes = useStyles();
     return (
         <div className={classes.mainDiv}>
-            <img src={backgroundImage} alt='backgroundimg' className={classes.backgroundImage} />
+            {/* <img src={backgroundImage} alt='backgroundimg' className={classes.backgroundImage} /> */}
             {/* <div className={classes.headerDiv}>
             <div className={classes.imageDiv}>
                 <img src={headerImage} className={classes.headerImage}/>

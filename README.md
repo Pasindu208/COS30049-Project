@@ -16,9 +16,8 @@ The Smart Contract Audit System aims to assist users in identifying potential vu
 ### Pages:
 
 1. Home page
-2. Login/Sign up
-3. Submit Solidity files (.sol)
-4. Report page
+2. Submit Solidity files (.sol)
+3. Report page
    	Previous reports and current
    	Suggestions for vulnerabilities
-5. About us
+4. About us

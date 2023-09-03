@@ -132,20 +132,20 @@ const Homemid = () => {
                                 <Typography variant="h6" component="div">
                                     What we offer
                                 </Typography>
-                                <List className={classes.list}>
+                                <List>
                                     <ListItem>
                                         <ListItemText
                                             primary="Assess smart contracts for potential vulnerabilities and security risks. "
                                             style={{ lineHeight: 1, margin: 0 }}
                                         />
                                     </ListItem>
-                                    <ListItem className={classes.listItem}>
+                                    <ListItem>
                                         <ListItemText
                                             primary="Providing comprehensive audit for vulnerabilities and security risks."
                                             style={{ lineHeight: 1, margin: 0 }}
                                         />
                                     </ListItem>
-                                    <ListItem className={classes.listItem}>
+                                    <ListItem>
                                         <ListItemText
                                             primary="Providing suggestions for every vulnerability category."
                                             style={{ lineHeight: 1, margin: 0 }}

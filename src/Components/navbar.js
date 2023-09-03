@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Lobster",
         color: textColor,
         fontSize: "2rem",
-        margin: theme.spacing(1),
+        padding: theme.spacing(1),
     },
     navlinks: {
         display: "flex",
@@ -52,7 +52,12 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "5px",
     },
     drawer: {
+        margin: 0,
+        padding: 0,
         width: "250px",
+        height: "100vh",
+        color: textColor,
+        backgroundColor: "#004e92",
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -92,7 +97,14 @@ const Navbar = () => {
                 <Typography
                     variant="h6"
                     className={classes.logo}
-                    style={{ color: "black" }}>
+                    style={{
+                        backgroundColor: "#bbbbbb50",
+                        backdropFilter: "blur(5px)",
+                        height: "100%",
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                    }}>
                     Smart Audit
                 </Typography>
             </div>
@@ -168,7 +180,6 @@ const Navbar = () => {
                 </Toolbar>
             </AppBar>
 
-            {/* Drawer for small screens */}
             <Drawer open={isDrawerOpen} onClose={toggleDrawer}>
                 {sideList()}
             </Drawer>

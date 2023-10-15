@@ -1,0 +1,30 @@
+-- Creating the database
+CREATE DATABASE Audits;
+
+-- Use the created database
+USE Audits;
+
+-- Creating the SmartContracts table
+CREATE TABLE SmartContracts (
+    contract_id INT AUTO_INCREMENT PRIMARY KEY,
+    upload_date DATE NOT NULL
+);
+
+-- Creating the AuditReports table
+CREATE TABLE AuditReports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    contract_id INT,
+    date_generated DATE NOT NULL,
+    total_vulnerabilities INT NOT NULL,
+    FOREIGN KEY (contract_id) REFERENCES SmartContracts(contract_id)
+);
+
+-- Creating the Vulnerabilities table
+CREATE TABLE Vulnerabilities (
+    vulnerability_id INT AUTO_INCREMENT PRIMARY KEY,
+    report_id INT,
+    type VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    recommendation TEXT NOT NULL,
+    FOREIGN KEY (report_id) REFERENCES AuditReports(report_id)
+);

@@ -3,12 +3,13 @@ import {
     Container,
     Typography,
     Paper,
-    TableContainer,
     Table,
+    TableContainer,
     TableHead,
     TableRow,
     TableCell,
     TableBody,
+    TableSortLabel
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
 
@@ -24,30 +25,54 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "100vh",
     },
 }));
+
 function ReportContent() {
     const [vulnerabilities, setVulnerabilities] = useState(null);
+    const [contracts, setContracts] = useState(null);
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState("asc");
 
     useEffect(() => {
         const fetchVulnerabilities = async () => {
             try {
                 const response = await fetch('http://localhost:5000/vulnerabilities');
                 const jsonData = await response.json();
-                setVulnerabilities(jsonData);
+                const valuerabilityData = jsonData[0].data;
+                const contractsData = jsonData[0].contracts
+                setContracts(contractsData);
+                // Sort the data based on initial load
+                const sortedData = valuerabilityData.sort((a, b) => {
+                    if (sortBy !== null) {
+                        if (a[sortBy] < b[sortBy]) {
+                            return sortOrder === 'asc' ? -1 : 1;
+                        }
+                        if (a[sortBy] > b[sortBy]) {
+                            return sortOrder === 'asc' ? 1 : -1;
+                        }
+                    }
+                    return 0;
+                });
+                setVulnerabilities(sortedData);
             } catch (error) {
                 console.error('Error fetching data: ', error);
             }
         };
         fetchVulnerabilities();
-    }, []);
+    }, [sortBy, sortOrder]);
+
+    const handleSort = (field) => {
+        if (sortBy === field) {
+            setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+        } else {
+            setSortBy(field);
+            setSortOrder("asc");
+        }
+    };
 
     const classes = useStyles();
     return (
         <Container maxWidth="md" className={classes.root}>
-            <Typography
-                variant="h4"
-                align="center"
-                color={"white"}
-                gutterBottom>
+            <Typography variant="h4" align="center" color={"primary"} gutterBottom>
                 Security Audit Report
             </Typography>
 
@@ -55,38 +80,72 @@ function ReportContent() {
                 <Typography variant="h5" gutterBottom>
                     Contract Information
                 </Typography>
-                <Typography>
-                    Contract Name: {auditReport.contractName}
-                </Typography>
-                <Typography>Audit Date: {auditReport.auditDate}</Typography>
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Contract Name</TableCell>
+                                <TableCell>AuditDate</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {contracts ? contracts.map((contract, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{contract[0]}</TableCell>
+                                    <TableCell>{contract[1]}</TableCell>
+                                </TableRow>
+                            )) :
+                                <TableRow>
+                                    <TableCell colSpan={4} align="center">Loading...</TableCell>
+                                </TableRow>}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
 
-                <Typography
-                    variant="h5"
-                    gutterBottom
-                    style={{ marginTop: "20px" }}>
+                <Typography variant="h5" gutterBottom style={{ marginTop: "20px" }}>
                     Critical Issues
                 </Typography>
                 <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Title</TableCell>
-                                <TableCell>Severity</TableCell>
-                                <TableCell>Confidence</TableCell>
+                                <TableCell>
+                                    <TableSortLabel
+                                        active={sortBy === 0}
+                                        direction={sortBy === 0 ? sortOrder : "asc"}
+                                        onClick={() => handleSort(0)}
+                                    >
+                                        Title
+                                    </TableSortLabel>
+                                </TableCell>
+                                <TableCell>
+                                    <TableSortLabel
+                                        active={sortBy === 1}
+                                        direction={sortBy === 1? sortOrder : "asc"}
+                                        onClick={() => handleSort(1)}
+                                    >
+                                        Severity
+                                    </TableSortLabel>
+                                </TableCell>
+                                <TableCell>
+                                    <TableSortLabel
+                                        active={sortBy === 2}
+                                        direction={sortBy === 2 ? sortOrder : "asc"}
+                                        onClick={() => handleSort(2)}
+                                    >
+                                        Confidence
+                                    </TableSortLabel>
+                                </TableCell>
                                 <TableCell>Recommendation</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {vulnerabilities ? vulnerabilities.map((issue, index) => (
                                 <TableRow key={index}>
+                                    <TableCell>{issue[0]}</TableCell>
                                     <TableCell>{issue[1]}</TableCell>
                                     <TableCell>{issue[2]}</TableCell>
-                                    <TableCell>
-                                        {issue[3]}
-                                    </TableCell>
-                                    <TableCell>
-                                        Reduce cyclomatic complexity by splitting the function into several smaller subroutines.
-                                    </TableCell>
+                                    <TableCell>{issue[3]}</TableCell>
                                 </TableRow>
                             )) :
                                 <TableRow>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     Container,
     Typography,
@@ -17,57 +17,6 @@ const auditReport = {
     auditDate: "2023-09-01",
 };
 
-const criticalIssues = [
-    {
-        title: "Critical Issue 1",
-        description: "Description of the critical issue 1",
-        severity: "High",
-        recommendation: "Recommendation for issue 1",
-    },
-    {
-        title: "Critical Issue 2",
-        description: "Description of the critical issue 2",
-        severity: "Low",
-        recommendation: "Recommendation for issue 2",
-    },
-    {
-        title: "Critical Issue 3",
-        description: "Description of the critical issue 3",
-        severity: "Medium",
-        recommendation: "Recommendation for issue 3",
-    },
-    {
-        title: "Critical Issue 4",
-        description: "Description of the critical issue 4",
-        severity: "Low",
-        recommendation: "Recommendation for issue 4",
-    },
-    {
-        title: "Critical Issue 5",
-        description: "Description of the critical issue 5",
-        severity: "Low",
-        recommendation: "Recommendation for issue 5",
-    },
-    {
-        title: "Critical Issue 6",
-        description: "Description of the critical issue 6",
-        severity: "High",
-        recommendation: "Recommendation for issue 6",
-    },
-    {
-        title: "Critical Issue 7",
-        description: "Description of the critical issue 7",
-        severity: "Medium",
-        recommendation: "Recommendation for issue 7",
-    },
-    {
-        title: "Critical Issue 8",
-        description: "Description of the critical issue 8",
-        severity: "High",
-        recommendation: "Recommendation for issue 8",
-    },
-];
-
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: "10vh",
@@ -76,6 +25,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 function ReportContent() {
+    const [vulnerabilities, setVulnerabilities] = useState(null);
+
+    useEffect(() => {
+        const fetchVulnerabilities = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/vulnerabilities');
+                const jsonData = await response.json();
+                setVulnerabilities(jsonData);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+        fetchVulnerabilities();
+    }, []);
+
     const classes = useStyles();
     return (
         <Container maxWidth="md" className={classes.root}>
@@ -107,22 +71,27 @@ function ReportContent() {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Title</TableCell>
-                                <TableCell>Description</TableCell>
                                 <TableCell>Severity</TableCell>
+                                <TableCell>Confidence</TableCell>
                                 <TableCell>Recommendation</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {criticalIssues.map((issue, index) => (
+                            {vulnerabilities ? vulnerabilities.map((issue, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{issue.title}</TableCell>
-                                    <TableCell>{issue.description}</TableCell>
-                                    <TableCell>{issue.severity}</TableCell>
+                                    <TableCell>{issue[1]}</TableCell>
+                                    <TableCell>{issue[2]}</TableCell>
                                     <TableCell>
-                                        {issue.recommendation}
+                                        {issue[3]}
+                                    </TableCell>
+                                    <TableCell>
+                                        Reduce cyclomatic complexity by splitting the function into several smaller subroutines.
                                     </TableCell>
                                 </TableRow>
-                            ))}
+                            )) :
+                                <TableRow>
+                                    <TableCell colSpan={4} align="center">Loading...</TableCell>
+                                </TableRow>}
                         </TableBody>
                     </Table>
                 </TableContainer>

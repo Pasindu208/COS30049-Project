@@ -106,7 +106,7 @@ def upload_file():
     connection.close()
 
     # return decodedstring
-    return "ok"
+    return jsonify({"result": "Success"}), 200
 
 
 @app.route('/vulnerabilities', methods=['GET'])
@@ -135,7 +135,7 @@ def get_vulnerabilities():
     cursor.close()
     connection.close()
     data = [{'contracts': contracts, 'data': vulnerabilities}]
-    return jsonify(data)
+    return jsonify(data), 200
 
 
 if __name__ == '__main__':

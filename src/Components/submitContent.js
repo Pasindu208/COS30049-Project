@@ -1,45 +1,54 @@
 import React from "react";
+import { Alert } from "@mui/material";
 import "../Styles/submitContent.css";
 
 class SubmitContent extends React.Component {
-    uploadFile() {
-        console.log("hi");
-    
-
-    const fileInput = document.getElementById("fileInput");
-    const file = fileInput.files[0];
-
-    if (!file) {
-        alert("Please select a file.");
-        return;
+    constructor(props) {
+        super(props);
+        this.state = {
+            alertMessage: "",
+            alertSeverity: "error",
+        };
     }
+    uploadFile = () => {
+        const fileInput = document.getElementById("fileInput");
+        const file = fileInput.files[0];
 
-    const formData = new FormData();
-    formData.append("file", file);
+        if (!file) {
+            this.setState({
+                alertMessage: "Please select a file.",
+                alertSeverity: "error",
+            });
+            return;
+        }
 
-    fetch("http://127.0.0.1:5000/upload", {
-        method: "POST",
-        body: formData,
-    })
-        .then((response) => {
-            if (!response.ok) {
-                // throw new Error("Network response was not ok");
-            }
-            return response.json();
+        const formData = new FormData();
+        formData.append("file", file);
+
+        fetch("http://127.0.0.1:5000/upload", {
+            method: "POST",
+            body: formData,
         })
-        .then((data) => {
-            console.log("File uploaded successfully:", data);
-            alert("File uploaded successfully!");
-        });
-    // .catch((error) => {
-    //     console.error(
-    //         "There was a problem with the fetch operation:",
-    //         error
-    //     );
-    //     alert("File upload failed. Please try again.");
-    // });
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                this.setState({
+                    alertMessage: data.result || data.error,
+                    alertSeverity: data.result ? "success" : "error",
+                });
+            })
+            .catch((error) => {
+                this.setState({
+                    alertMessage: "File upload failed. Please try again.",
+                    alertSeverity: "error",
+                });
+            });
+    };
 
-    }
     render() {
         return (
             <div>
@@ -80,8 +89,16 @@ class SubmitContent extends React.Component {
                     />
 
                     <button type="button" onClick={this.uploadFile}>
-                        Submit
+                    Submit
                     </button>
+                    {this.state.alertMessage?
+                                    <Alert
+                                    severity={this.state.alertSeverity}
+                                >
+                                    {this.state.alertMessage}
+                                </Alert>:""
+                    }
+
                 </div>
             </div>
         );
@@ -89,3 +106,7 @@ class SubmitContent extends React.Component {
 }
 
 export default SubmitContent;
+
+
+
+
